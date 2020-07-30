@@ -7,7 +7,7 @@ export default function CoursesList(props) {
   const { danhSachKhoaHoc, loading, error } = useSelector(
     (state) => state.khoaHocReducer
   );
-  console.log(danhSachKhoaHoc);
+  
 
   const dispatch = useDispatch();
 

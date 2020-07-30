@@ -1,6 +1,7 @@
-
-
-import GET_COURSES_LIST from "../constants/khoaHocConstants";
+import {
+  GET_COURSES_LIST,
+  GET_COURSES_DETAIL,
+} from "../constants/khoaHocConstants";
 import axios from "../utils/axiosClient";
 
 export const getCoursesList = () => {
@@ -10,9 +11,7 @@ export const getCoursesList = () => {
     });
 
     axios
-      .get(
-        "QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01"
-      )
+      .get("QuanLyKhoaHoc/LayDanhSachKhoaHoc?MaNhom=GP01")
       .then((result) => {
         dispatch({
           type: GET_COURSES_LIST.SUCCESS,
@@ -25,6 +24,30 @@ export const getCoursesList = () => {
       .catch((error) => {
         dispatch({
           type: GET_COURSES_LIST.FAIL,
+        });
+      });
+  };
+};
+
+export const getCourseDetail = (maKhoaHoc) => {
+  return (dispatch) => {
+    dispatch({
+      type: GET_COURSES_DETAIL.REQUEST,
+    });
+
+    axios
+      .get(`/QuanLyKhoaHoc/LayThongTinKhoaHoc?maKhoaHoc=${maKhoaHoc}`)
+      .then((result) => {
+        dispatch({
+          type: GET_COURSES_DETAIL.SUCCESS,
+          payload: {
+            data: result.data,
+          },
+        });
+      })
+      .catch((error) => {
+        dispatch({
+          type: GET_COURSES_DETAIL.FAIL,
         });
       });
   };
