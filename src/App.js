@@ -14,6 +14,7 @@ import CoursesManagement from "./pages/CoursesManagement";
 import {ComponentAWithForm, ComponentBWithForm} from "./pages/HOC/withForm"
 import Counter from "./pages/Hooks/Counter";
 import Form from "./pages/Hooks/Form";
+import CourseDetail from "./pages/CourseDetail";
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
         <UserRoute exact path="/" component={Home} />
         <UserRoute path="/courses-list" component={CoursesList} />
         <UserRoute path="/signin" component={SignIn} />
+        <UserRoute path="/course/:id" component={CourseDetail} />
         <Route
           path="/signup"
           render={(routerProps) => {
