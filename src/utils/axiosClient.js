@@ -9,10 +9,11 @@ export const setToken = (token) => {
 };
 
 axiosClient.interceptors.request.use((config) => {
-  const userInfo =
-    localStorage.getItem("userInfo") &&
-    JSON.parse(localStorage.getItem("userInfo"));
-  if (userInfo) {config.headers.Authorization = `Bearer ${userInfo.accessToken}`};
+  
+  if (localStorage.getItem("userInfo")) {
+    const userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    config.headers.Authorization = `Bearer ${userInfo.accessToken}`;
+  }
 
   return config;
 });
