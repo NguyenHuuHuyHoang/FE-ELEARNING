@@ -12,7 +12,7 @@ axiosClient.interceptors.request.use((config) => {
   const userInfo =
     localStorage.getItem("userInfo") &&
     JSON.parse(localStorage.getItem("userInfo"));
-  config.headers.Authorization = `Bearer ${userInfo.accessToken}`;
+  if (userInfo) {config.headers.Authorization = `Bearer ${userInfo.accessToken}`};
 
   return config;
 });

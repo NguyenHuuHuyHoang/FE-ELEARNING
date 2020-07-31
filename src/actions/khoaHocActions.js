@@ -5,6 +5,7 @@ import {
 import axios from "../utils/axiosClient";
 
 export const getCoursesList = () => {
+  
   return (dispatch) => {
     dispatch({
       type: GET_COURSES_LIST.REQUEST,
@@ -22,6 +23,7 @@ export const getCoursesList = () => {
         });
       })
       .catch((error) => {
+       console.log(error);
         dispatch({
           type: GET_COURSES_LIST.FAIL,
         });

@@ -12,11 +12,16 @@ export default function CoursesList(props) {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    
     dispatch(getCoursesList());
   }, []);
 
   if (loading) {
     return <h1>Loading</h1>;
+  }
+
+  if (error) {
+    return <h1> Loi</h1>
   }
 
   return (
@@ -26,7 +31,7 @@ export default function CoursesList(props) {
           <div className="col-3" key={item.maKhoaHoc}>
           <div className="card">
             
-            <img className="card-img-top" src={item.hinhAnh}/>
+            <img className="card-img-top" src={item.hinhAnh} alt={item.tenKhoaHoc}/>
             <div className="card-body">
               <h4 className="card-title">{item.tenKhoaHoc}</h4>
               <p className="card-text">{item.moTa}</p>
